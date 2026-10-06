@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Điện Tử - Viễn Thông | Công Nghệ Tương Lai</title>
+
+  <meta name="description"
+        content="Website giới thiệu ngành Điện tử - Viễn thông">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #050816;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* ===== NỀN ===== */
+
+    body::before {
+      content: "";
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      background: #00eaff;
+      filter: blur(180px);
+      opacity: 0.12;
+      top: -150px;
+      left: -150px;
+      z-index: -1;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      background: #7c3cff;
+      filter: blur(180px);
+      opacity: 0.13;
+      right: -150px;
+      bottom: -150px;
+      z-index: -1;
+    }
+
+    /* ===== THANH MENU ===== */
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      padding: 18px 7%;
+
+      background: rgba(5, 8, 22, 0.75);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(0, 234, 255, 0.15);
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: #00eaff;
+      text-shadow: 0 0 15px #00eaff;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #00eaff;
+      text-shadow: 0 0 10px #00eaff;
+    }
+
+    /* ===== HERO ===== */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 20px 50px;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 950px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 9px 18px;
+      border: 1px solid #00eaff;
+      border-radius: 50px;
+      color: #00eaff;
+      margin-bottom: 25px;
+      font-size: 14px;
+      box-shadow: 0 0 20px rgba(0, 234, 255, 0.2);
+    }
+
+    .hero h1 {
+      font-size: clamp(45px, 8vw, 90px);
+      line-height: 1;
+      margin-bottom: 25px;
+      background: linear-gradient(
+        90deg,
+        #00eaff,
+        #ffffff,
+        #8b5cf6
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #d8e7ff;
+    }
+
+    .hero p {
+      max-width: 750px;
+      margin: auto;
+      color: #aab5d0;
+      line-height: 1.8;
+      font-size: 17px;
+    }
+
+    .buttons {
+      margin-top: 35px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 25px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn-main {
+      background: #00eaff;
+      color: #031018;
+      box-shadow: 0 0 25px rgba(0, 234, 255, 0.4);
+    }
+
+    .btn-main:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 40px rgba(0, 234, 255, 0.7);
+    }
+
+    .btn-outline {
+      border: 1px solid #33415c;
+      color: white;
+    }
+
+    .btn-outline:hover {
+      border-color: #00eaff;
+      color: #00eaff;
+    }
+
+    /* ===== SECTION ===== */
+
+    section {
+      padding: 100px 7%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title span {
+      color: #00eaff;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    .section-title h2 {
+      font-size: 42px;
+      margin-top: 10px;
+    }
+
+    .section-title p {
+      color: #8e9ab7;
+      margin-top: 15px;
+    }
+
+    /* ===== GIỚI THIỆU ===== */
+
+    .intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .intro-text h3 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .intro-text p {
+      color: #aab5d0;
+      line-height: 1.9;
+      margin-bottom: 15px;
+    }
+
+    .tech-box {
+      padding: 40px;
+      border: 1px solid rgba(0, 234, 255, 0.2);
+      border-radius: 20px;
+      background: rgba(10, 20, 45, 0.6);
+      box-shadow: inset 0 0 50px rgba(0, 234, 255, 0.03);
+    }
+
+    .tech-circle {
+      width: 230px;
+      height: 230px;
+      margin: auto;
+      border: 2px solid #00eaff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 75px;
+      box-shadow:
+        0 0 20px #00eaff,
+        inset 0 0 30px rgba(0, 234, 255, 0.2);
+
+      animation: pulse 3s infinite;
+    }
+
+    @keyframes pulse {
+      50% {
+        box-shadow:
+          0 0 50px #00eaff,
+          inset 0 0 50px rgba(0, 234, 255, 0.3);
+      }
+    }
+
+    /* ===== CARD ===== */
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .card {
+      padding: 30px;
+      border-radius: 18px;
+
+      background: rgba(13, 21, 43, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+
+      transition: 0.35s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      border-color: #00eaff;
+      box-shadow: 0 15px 40px rgba(0, 234, 255, 0.12);
+    }
+
+    .icon {
+      font-size: 42px;
+      margin-bottom: 20px;
+    }
+
+    .card h3 {
+      margin-bottom: 15px;
+      font-size: 22px;
+    }
+
+    .card p {
+      color: #9ba8c4;
+      line-height: 1.7;
+    }
+
+    /* ===== CÔNG NGHỆ ===== */
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .tech {
+      text-align: center;
+      padding: 30px 15px;
+      border-radius: 15px;
+      background: #0b1226;
+      border: 1px solid #1b2948;
+    }
+
+    .tech strong {
+      display: block;
+      font-size: 18px;
+      margin-top: 12px;
+    }
+
+    .tech small {
+      display: block;
+      color: #7785a5;
+      margin-top: 8px;
+    }
+
+    /* ===== NGHỀ NGHIỆP ===== */
+
+    .career {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .career-item {
+      padding: 25px;
+      background: linear-gradient(
+        135deg,
+        rgba(0, 234, 255, 0.07),
+        rgba(124, 60, 255, 0.07)
+      );
+
+      border: 1px solid #1c2948;
+      border-radius: 15px;
+    }
+
+    .career-item h3 {
+      margin-bottom: 10px;
+    }
+
+    .career-item p {
+      color: #9ba8c4;
+      line-height: 1.6;
+    }
+
+    /* ===== TIMELINE ===== */
+
+    .timeline {
+      max-width: 800px;
+      margin: auto;
+      border-left: 2px solid #00eaff;
+      padding-left: 35px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 45px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: #00eaff;
+      border-radius: 50%;
+      left: -42px;
+      top: 5px;
+      box-shadow: 0 0 15px #00eaff;
+    }
+
+    .timeline-item h3 {
+      color: #00eaff;
+      margin-bottom: 10px;
+    }
+
+    .timeline-item p {
+      color: #9ba8c4;
+      line-height: 1.7;
+    }
+
+    /* ===== CTA ===== */
+
+    .cta {
+      text-align: center;
+      padding: 80px 20px;
+      margin: 50px 7%;
+      border-radius: 25px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(0, 234, 255, 0.1),
+          rgba(124, 60, 255, 0.1)
+        );
+
+      border: 1px solid rgba(0, 234, 255, 0.2);
+    }
+
+    .cta h2 {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      color: #9ba8c4;
+      margin-bottom: 30px;
+    }
+
+    /* ===== FOOTER ===== */
+
+    footer {
+      text-align: center;
+      padding: 35px;
+      color: #66738f;
+      border-top: 1px solid #17233d;
+    }
+
+    footer span {
+      color: #00eaff;
+    }
+
+    /* ===== MOBILE ===== */
+
+    @media (max-width: 850px) {
+
+      nav ul {
+        display: none;
+      }
+
+      .intro {
+        grid-template-columns: 1fr;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .career {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 50px;
+      }
+
+      .section-title h2 {
+        font-size: 32px;
+      }
+    }
+
+    @media (max-width: 500px) {
+
+      section {
+        padding: 70px 5%;
+      }
+
+      .tech-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 42px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+
+  <nav>
+    <div class="logo">ELECTRO<span style="color:white">NET</span></div>
+
+    <ul>
+      <li><a href="#home">Trang chủ</a></li>
+      <li><a href="#about">Ngành học</a></li>
+      <li><a href="#technology">Công nghệ</a></li>
+      <li><a href="#career">Nghề nghiệp</a></li>
+      <li><a href="#future">Tương lai</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- ================= HERO ================= -->
+
+  <section class="hero" id="home">
+
+    <div class="hero-content">
+
+      <div class="badge">
+        ⚡ KHÁM PHÁ NGÀNH CÔNG NGHỆ
+      </div>
+
+      <h1>
+        ĐIỆN TỬ<br>
+        VIỄN THÔNG
+      </h1>
+
+      <h2>
+        Kết nối thế giới – Kiến tạo tương lai
+      </h2>
+
+      <p>
+        Ngành Điện tử – Viễn thông là lĩnh vực công nghệ nghiên cứu,
+        thiết kế và phát triển các hệ thống điện tử, truyền thông,
+        mạng viễn thông và các công nghệ kết nối hiện đại.
+      </p>
+
+      <div class="buttons">
+
+        <a href="#about" class="btn btn-main">
+          Khám phá ngành →
+        </a>
+
+        <a href="#career" class="btn btn-outline">
+          Cơ hội nghề nghiệp
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= ABOUT ================= -->
+
+  <section id="about">
+
+    <div class="section-title">
+
+      <span>01 — GIỚI THIỆU</span>
+
+      <h2>Điện tử – Viễn thông là gì?</h2>
+
+      <p>
+        Một trong những ngành quan trọng của cuộc cách mạng công nghiệp số.
+      </p>
+
+    </div>
+
+
+    <div class="intro">
+
+      <div class="intro-text">
+
+        <h3>🌐 Ngành của sự kết nối</h3>
+
+        <p>
+          Điện tử – Viễn thông tập trung vào việc nghiên cứu,
+          thiết kế và vận hành các thiết bị điện tử và hệ thống
+          truyền thông.
+        </p>
+
+        <p>
+          Từ điện thoại thông minh, Internet, vệ tinh,
+          mạng 5G cho đến các hệ thống IoT đều có sự đóng góp
+          của ngành Điện tử – Viễn thông.
+        </p>
+
+        <p>
+          Đây là ngành phù hợp với những bạn yêu thích công nghệ,
+          máy tính, thiết bị điện tử và muốn tạo ra những sản phẩm
+          công nghệ phục vụ cuộc sống.
+        </p>
+
+      </div>
+
+
+      <div class="tech-box">
+
+        <div class="tech-circle">
+          📡
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= KIẾN THỨC ================= -->
+
+  <section>
+
+    <div class="section-title">
+
+      <span>02 — BẠN SẼ HỌC GÌ?</span>
+
+      <h2>Những lĩnh vực quan trọng</h2>
+
+    </div>
+
+
+    <div class="cards">
+
+      <div class="card">
+
+        <div class="icon">🔌</div>
+
+        <h3>Điện tử</h3>
+
+        <p>
+          Tìm hiểu linh kiện điện tử, mạch điện,
+          vi điều khiển, thiết kế mạch và các hệ thống điện tử.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="icon">📡</div>
+
+        <h3>Viễn thông</h3>
+
+        <p>
+          Nghiên cứu cách truyền và nhận thông tin
+          thông qua mạng di động, cáp quang, vệ tinh
+          và các hệ thống truyền thông.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="icon">💻</div>
+
+        <h3>Công nghệ số</h3>
+
+        <p>
+          Tiếp cận IoT, AI, mạng máy tính, hệ thống nhúng
+          và các nền tảng công nghệ thông minh.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= TECHNOLOGY ================= -->
+
+  <section id="technology">
+
+    <div class="section-title">
+
+      <span>03 — TECHNOLOGY</span>
+
+      <h2>Công nghệ tiêu biểu</h2>
+
+      <p>
+        Những công nghệ đang thay đổi thế giới.
+      </p>
+
+    </div>
+
+
+    <div class="tech-grid">
+
+      <div class="tech">
+        📱
+        <strong>5G / 6G</strong>
+        <small>Mạng di động thế hệ mới</small>
+      </div>
+
+      <div class="tech">
+        🌐
+        <strong>IoT</strong>
+        <small>Internet vạn vật</small>
+      </div>
+
+      <div class="tech">
+        🛰️
+        <strong>Satellite</strong>
+        <small>Truyền thông vệ tinh</small>
+      </div>
+
+      <div class="tech">
+        🤖
+        <strong>AI</strong>
+        <small>Trí tuệ nhân tạo</small>
+      </div>
+
+      <div class="tech">
+        🔦
+        <strong>Fiber Optic</strong>
+        <small>Cáp quang</small>
+      </div>
+
+      <div class="tech">
+        💻
+        <strong>Embedded</strong>
+        <small>Hệ thống nhúng</small>
+      </div>
+
+      <div class="tech">
+        🧠
+        <strong>Semiconductor</strong>
+        <small>Công nghệ bán dẫn</small>
+      </div>
+
+      <div class="tech">
+        ☁️
+        <strong>Cloud</strong>
+        <small>Điện toán đám mây</small>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= CAREER ================= -->
+
+  <section id="career">
+
+    <div class="section-title">
+
+      <span>04 — CAREER</span>
+
+      <h2>Học xong làm gì?</h2>
+
+      <p>
+        Nhiều hướng phát triển nghề nghiệp trong thời đại số.
+      </p>
+
+    </div>
+
+
+    <div class="career">
+
+      <div class="career-item">
+
+        <h3>📡 Kỹ sư viễn thông</h3>
+
+        <p>
+          Thiết kế, triển khai và vận hành các hệ thống
+          mạng viễn thông và truyền thông.
+        </p>
+
+      </div>
+
+
+      <div class="career-item">
+
+        <h3>🔧 Kỹ sư điện tử</h3>
+
+        <p>
+          Thiết kế mạch điện tử, thiết bị điện tử
+          và hệ thống điều khiển.
+        </p>
+
+      </div>
+
+
+      <div class="career-item">
+
+        <h3>🤖 Kỹ sư IoT</h3>
+
+        <p>
+          Xây dựng các thiết bị thông minh có khả năng
+          kết nối Internet và thu thập dữ liệu.
+        </p>
+
+      </div>
+
+
+      <div class="career-item">
+
+        <h3>💻 Kỹ sư hệ thống nhúng</h3>
+
+        <p>
+          Phát triển phần mềm và phần cứng cho các
+          thiết bị thông minh.
+        </p>
+
+      </div>
+
+
+      <div class="career-item">
+
+        <h3>🛰️ Kỹ sư mạng</h3>
+
+        <p>
+          Quản lý, thiết kế và tối ưu hệ thống mạng
+          máy tính và mạng viễn thông.
+        </p>
+
+      </div>
+
+
+      <div class="career-item">
+
+        <h3>🔬 R&D Engineer</h3>
+
+        <p>
+          Nghiên cứu và phát triển các sản phẩm,
+          công nghệ điện tử và viễn thông mới.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= LỘ TRÌNH ================= -->
+
+  <section id="future">
+
+    <div class="section-title">
+
+      <span>05 — ROADMAP</span>
+
+      <h2>Hành trình trở thành kỹ sư</h2>
+
+    </div>
+
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+
+        <h3>01 — Nền tảng</h3>
+
+        <p>
+          Học toán, vật lý, lập trình và các kiến thức
+          cơ bản về điện – điện tử.
+        </p>
+
+      </div>
+
+
+      <div class="timeline-item">
+
+        <h3>02 — Chuyên ngành</h3>
+
+        <p>
+          Tìm hiểu mạch điện, vi điều khiển,
+          truyền thông, mạng và hệ thống nhúng.
+        </p>
+
+      </div>
+
+
+      <div class="timeline-item">
+
+        <h3>03 — Thực hành</h3>
+
+        <p>
+          Xây dựng các dự án thực tế như robot,
+          IoT, hệ thống mạng hoặc thiết bị điện tử.
+        </p>
+
+      </div>
+
+
+      <div class="timeline-item">
+
+        <h3>04 — Chuyên nghiệp</h3>
+
+        <p>
+          Tham gia doanh nghiệp, nghiên cứu công nghệ
+          và phát triển các sản phẩm mới.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= CTA ================= -->
+
+  <div class="cta">
+
+    <h2>🚀 Sẵn sàng bước vào thế giới công nghệ?</h2>
+
+    <p>
+      Điện tử – Viễn thông không chỉ là một ngành học.
+      Đó là nền tảng để xây dựng tương lai kết nối.
+    </p>
+
+    <a href="#home" class="btn btn-main">
+      Bắt đầu khám phá ↑
+    </a>
+
+  </div>
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+
+    <p>
+      © 2026 <span>ELECTRONET</span> |
+      Website giới thiệu ngành Điện tử – Viễn thông
+    </p>
+
+    <p style="margin-top:10px;">
+      Designed with ⚡ Technology
+    </p>
+
+  </footer>
+
+
+  <!-- ================= JAVASCRIPT ================= -->
+
+  <script>
+
+    // Hiệu ứng xuất hiện khi cuộn trang
+
+    const elements = document.querySelectorAll(
+      ".card, .career-item, .tech, .timeline-item"
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+
+        entries.forEach((entry) => {
+
+          if (entry.isIntersecting) {
+
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+
+          }
+
+        });
+
+      },
+      {
+        threshold: 0.15
+      }
+    );
+
+
+    elements.forEach((el) => {
+
+      el.style.opacity = "0";
+      el.style.transform = "translateY(30px)";
+      el.style.transition = "0.7s ease";
+
+      observer.observe(el);
+
+    });
+
+  </script>
+
+</body>
+</html>.
